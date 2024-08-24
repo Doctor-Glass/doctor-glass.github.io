@@ -1,4 +1,5 @@
 :root {
+  /* Colors based on the original palette */
   --color-1: #CCFFBD;
   --color-2: #7ECA9C;
   --color-3: #40394A;
@@ -8,11 +9,20 @@
   --color-7: #AEA8B3;
   --color-8: #D3CDD6;
   --color-9: #30CA7B;
+
+  /* Colors suggested by Haeden */
+  --color-10: #FF3333;
+  --color-11: #66FF00;
+  --color-12: #3399FF;
+  --color-13: #333333;
+  --color-14: #66CC00;
+  --color-15: #669933;
 }
 
 html {
   font-family: "Noto Sans Mono","sans-serif";
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
+  scroll-padding-top: 50px;
 }
 
 #navbar {
@@ -81,8 +91,6 @@ footer a:hover {
 
 section {
   overflow: hidden;
-  padding-top: 50px;
-  margin-top: -50px;
 }
 
 .welcome {
@@ -147,6 +155,9 @@ section {
   font-size: 16.5px;
   text-indent: 2em;
   color: var(--color-9);
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 5px;
 }
 
 .section-content a {
@@ -155,6 +166,36 @@ section {
 }
 
 .section-content a:hover {
-  text-decoration: underline;
   color: var(--color-1);
+}
+
+.projects-grid {
+  display: grid;
+  margin: 30px auto;
+  grid-template-columns: 1fr 1fr;
+  width: 90%;
+  grid-gap: 4rem;
+}
+
+.projects-grid a {
+  background: var(--color-5);
+  text-decoration: none;
+  color: var(--color-2);
+}
+
+.project-name {
+  text-align: center;
+  color: var(--color-2);
+}
+
+.project-name:hover {
+  color: var(--color-1);
+}
+
+.project-image {
+  width: 100%;
+}
+
+@media {
+  
 }
