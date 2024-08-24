@@ -15,11 +15,9 @@ After that, I decided to choose a font for my site. In keeping with the terminal
 One problem I had to solve on this project was the fact that the top navbar made the links scroll oddly. When clicking on a nav link at the top of the page, the page would scroll that header to the top of the screen, which cut off the first 50px of the header. To solve that, I added the following to my stylesheet:
 
 ```css
-section {
-  overflow: hidden;
-  padding-top: 50px;
-  margin-top: -50px;
+html {
+  scroll-padding-top: 50px;
 }
 ```
 
-This effectively shifted the margin down by 50px for the purpose of the anchors, mostly solving the issue. There were a few remaining issues that this caused with having content in one section overflow down to the next, which I temporarily patched with four ```<br>``` tags at the end of each section, but I'm planning to come back and implement a more comprehensive solution later.
+This padded out the scroll destination for the anchors, solving the problem.
