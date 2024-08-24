@@ -1,0 +1,160 @@
+:root {
+  --color-1: #CCFFBD;
+  --color-2: #7ECA9C;
+  --color-3: #40394A;
+  --color-4: #1C1427;
+  --color-5: #645E6D;
+  --color-6: #898390;
+  --color-7: #AEA8B3;
+  --color-8: #D3CDD6;
+  --color-9: #30CA7B;
+}
+
+html {
+  font-family: "Noto Sans Mono","sans-serif";
+  scroll-behavior: smooth;
+}
+
+#navbar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 50px;
+  width: 100%;
+  background-color: var(--color-4);
+  overflow: hidden;
+  border-bottom: 5px solid var(--color-8);
+}
+
+#navbar a:not(:first-of-type) {
+  height: 100%;
+  float: left;
+  display: block;
+  color: var(--color-1);
+  text-align: center;
+  padding: 6px 20px;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+#navbar a:hover {
+  color: var(--color-4);
+  background-color: var(--color-2);
+  font-weight: 600;
+}
+
+.icon-photo {
+  float: left;
+  display: block;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  margin: 2.5px 20px;
+}
+
+.icon-photo:hover {
+  outline: 4px solid var(--color-2);
+  
+}
+
+body {
+  margin: 0;
+  padding-top: 50px;
+}
+
+footer {
+  color: var(--color-2);
+  background-color: var(--color-4);
+  text-align: center;
+  overflow: hidden;
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--color-1);
+}
+
+footer a:hover {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+section {
+  overflow: hidden;
+  padding-top: 50px;
+  margin-top: -50px;
+}
+
+.welcome {
+  background-color: var(--color-4);
+  height: 100vh;
+  text-align: center;
+}
+
+.center-header {
+  padding-top: calc((80vh - 50px) / 2);
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+.projects {
+  background-color: var(--color-3);
+  
+}
+
+.about-me {
+  background-color: var(--color-5);
+}
+
+.contact {
+  background-color: var(--color-6);
+}
+
+.section-header {
+  color: var(--color-2);
+  margin: 10px auto;
+  text-align: center;
+  font-size: 50px;
+}
+
+.section-subheader {
+  color: var(--color-2);
+  font-weight: normal;
+  margin: 5px auto;
+  text-align: center;
+  font-style: italic;
+  font-size: 25px;
+}
+
+.section-content-header {
+  font-size: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.section-list {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.section-list-content {
+  font-size: 16.5px;
+  color: var(--color-9);
+}
+
+.section-content {
+  font-size: 16.5px;
+  text-indent: 2em;
+  color: var(--color-9);
+}
+
+.section-content a {
+  text-decoration: none;
+  color: var(--color-2);
+}
+
+.section-content a:hover {
+  text-decoration: underline;
+  color: var(--color-1);
+}
