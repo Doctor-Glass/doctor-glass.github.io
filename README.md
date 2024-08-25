@@ -2,7 +2,7 @@
 
 This is a repository for my personal portfolio webpage, which tracks the site and all I add to it. It was originally created as part of the FreeCodeCamp Responsive Web Design certification, but I have added to it since.
 
-You can access my website at [doctor-glass.github.io/](https://doctor-glass.github.io/)
+You can access my website at [doctor-glass.github.io](https://doctor-glass.github.io/)
 
 ## How I Developed My Portfolio.
 
