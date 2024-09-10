@@ -1,22 +1,28 @@
 :root {
   /* Colors based on the original palette */
-  --color-1: #CCFFBD;
-  --color-2: #7ECA9C;
-  --color-3: #40394A;
-  --color-4: #4C5356;
-  --color-5: #645E6D;
-  --color-6: #898390;
-  --color-7: #AEA8B3;
-  --color-8: #D3CDD6;
-  --color-9: #30CA7B;
+  --background-1: #F03A47;
+  --background-2: #FFFCF2;
+  --background-3: #44CF6C;
+  --background-4: #4357AD;
+  --background-5: #3C3C3B;
+  
+  --headers: ;
+  --text: #44cf44;
+  --text-inverted: #3C3C3B;
+  --text-header: ;
+  --text-subheader: ;
+  --links-normal: #44cf44;
+  --links-highlight: #FFFCF2;
+  
+  --topbar-bg: #FFFCF2;
+  --topbar-border-bottom: #44cf44;
+  --topbar-text-normal: #44CF6C;
+  --topbar-text-hover: #FFFCF2;
+  --topbar-text-highlight: #3C3C3B;
 
-  /* Colors suggested by Haeden */
-  --color-10: #FF3333;
-  --color-11: #66FF00;
-  --color-12: #3399FF;
-  --color-13: #333333;
-  --color-14: #66CC00;
-  --color-15: #669933;
+  --icon-photo-hover: #3c3c3b;
+
+  --footer-bg: ;
 }
 
 html {
@@ -31,25 +37,26 @@ html {
   left: 0px;
   height: 50px;
   width: 100%;
-  background-color: var(--color-4);
+  background-color: var(--topbar-bg);
   overflow: hidden;
-  border-bottom: 5px solid var(--color-8);
+  border-bottom: 5px solid var(--topbar-border-bottom);
 }
 
 #navbar a:not(:first-of-type) {
   height: 100%;
   float: left;
   display: block;
-  color: var(--color-1);
+  color: var(--topbar-text-normal);
   text-align: center;
   padding: 6px 20px;
   text-decoration: none;
   font-size: 25px;
+  font-weight: 600;
 }
 
 #navbar a:hover {
-  color: var(--color-4);
-  background-color: var(--color-2);
+  color: var(--topbar-text-hover);
+  background-color: var(--topbar-text-highlight);
   font-weight: 600;
 }
 
@@ -63,7 +70,7 @@ html {
 }
 
 .icon-photo:hover {
-  outline: 4px solid var(--color-2);
+  outline: 4px solid var(--icon-photo-hover);
   
 }
 
@@ -73,30 +80,26 @@ body {
 }
 
 footer {
-  color: var(--color-2);
-  background-color: var(--color-4);
+  color: var(--text);
+  background-color: var(--footer-bg);
   text-align: center;
   overflow: hidden;
 }
 
 footer a {
+  color: var(--links-normal);
   text-decoration: none;
   color: var(--color-1);
 }
 
 footer a:hover {
+  color: var(--links-highlight);
   text-decoration: underline;
   font-weight: 600;
 }
 
 section {
   overflow: hidden;
-}
-
-.welcome {
-  background-color: var(--color-4);
-  height: 100vh;
-  text-align: center;
 }
 
 .center-header {
@@ -106,28 +109,36 @@ section {
   line-height: normal;
 }
 
+/* Sections */
+.welcome {
+  background-color: var(--background-1);
+  height: 100vh;
+  text-align: center;
+}
+
 .projects {
-  background-color: var(--color-3);
+  background-color: var(--background-2);
   
 }
 
 .about-me {
-  background-color: var(--color-5);
+  background-color: var(--background-3);
+  color: var(--text-inverted);
 }
 
 .contact {
-  background-color: var(--color-6);
+  background-color: var(--background-4);
 }
 
 .section-header {
-  color: var(--color-2);
+  color: var(--text-header);
   margin: 10px auto;
   text-align: center;
   font-size: 50px;
 }
 
 .section-subheader {
-  color: var(--color-2);
+  color: var(--text-subheader);
   font-weight: normal;
   margin: 5px auto;
   text-align: center;
@@ -148,13 +159,13 @@ section {
 
 .section-list-content {
   font-size: 16.5px;
-  color: var(--color-9);
+  color: var(--text);
 }
 
 .section-content {
   font-size: 16.5px;
   text-indent: 2em;
-  color: var(--color-9);
+  color: var(--text);
   width: 80%;
   margin: 0 auto;
   padding-bottom: 5px;
@@ -162,34 +173,46 @@ section {
 
 .section-content a {
   text-decoration: none;
-  color: var(--color-2);
+  color: var(--links-normal);
 }
 
 .section-content a:hover {
-  color: var(--color-1);
+  color: var(--links-highlight);
+}
+
+.text-inverted {
+  color: var(--text-inverted);
+}
+
+a.text-inverted {
+  color: var(--text-inverted);
 }
 
 .projects-grid {
   display: grid;
   margin: 30px auto;
   grid-template-columns: 1fr 1fr;
-  width: 90%;
-  grid-gap: 4rem;
+  width: 70%;
+  grid-gap: 12rem;
 }
 
 .projects-grid a {
-  background: var(--color-5);
+  background: var(--background-5);
   text-decoration: none;
-  color: var(--color-2);
+  color: var(--links-normal);
+}
+
+.project-tile:hover {
+  color: var(--links-highlight);
 }
 
 .project-name {
   text-align: center;
-  color: var(--color-2);
+  color: var(--links-normal);
 }
 
 .project-name:hover {
-  color: var(--color-1);
+  color: var(--links-highlight);
 }
 
 .project-image {
