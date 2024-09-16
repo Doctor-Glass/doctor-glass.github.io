@@ -1,28 +1,33 @@
 :root {
   /* Colors based on the original palette */
   --background-1: #F03A47;
-  --background-2: #FFFCF2;
-  --background-3: #44CF6C;
-  --background-4: #4357AD;
+  --background-2: #FFFFFF;
+  --background-3: #F1E255;
+  --background-4: #000000;
   --background-5: #3C3C3B;
   
   --headers: ;
-  --text: #44cf44;
-  --text-inverted: #3C3C3B;
+  --text: #000000;
+  --text-inverted: #FDFDB2;
   --text-header: ;
   --text-subheader: ;
-  --links-normal: #44cf44;
-  --links-highlight: #FFFCF2;
+  --links-normal: #FDFDB2;
+  --links-highlight: #ffff50;
   
-  --topbar-bg: #FFFCF2;
-  --topbar-border-bottom: #44cf44;
-  --topbar-text-normal: #44CF6C;
-  --topbar-text-hover: #FFFCF2;
+  --topbar-bg: #FFFFFF;
+  --topbar-border-bottom: #F1E255;
+  --topbar-text-normal: #000000;
+  --topbar-text-hover: #FFFF50;
   --topbar-text-highlight: #3C3C3B;
 
   --icon-photo-hover: #3c3c3b;
 
   --footer-bg: ;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
 }
 
 html {
@@ -123,11 +128,12 @@ section {
 
 .about-me {
   background-color: var(--background-3);
-  color: var(--text-inverted);
+  color: var(--text);
 }
 
 .contact {
   background-color: var(--background-4);
+  color: var(--text-inverted);
 }
 
 .section-header {
@@ -185,7 +191,7 @@ section {
 }
 
 a.text-inverted {
-  color: var(--text-inverted);
+  color: var(--text);
 }
 
 .projects-grid {
@@ -216,7 +222,36 @@ a.text-inverted {
 }
 
 .project-image {
-  width: 100%;
+  width: calc(100% - 10px);
+  outline: 5px solid black;
+}
+
+.project-image:hover {
+  outline: 5px solid var(--links-highlight)
+}
+
+.contact-list {
+  font-size: 2em;
+  text-align: center;
+  display: block;
+  margin: 1em;
+}
+
+.contact-link {
+  color: var(--links-normal);
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  color: var(--links-highlight);
+}
+
+.contact-icon {
+  
+}
+
+.contact-text {
+  display: inline;
 }
 
 @media {
