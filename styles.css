@@ -126,7 +126,7 @@ section {
 }
 
 .section-list {
-  width: 60%;
+  width: 50%;
   margin: 0 auto;
 }
 
@@ -137,9 +137,9 @@ section {
 
 .section-content {
   font-size: 1.5em;
-  text-indent: 2em;
+  text-indent: 1.5em;
   color: var(--text);
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   padding-bottom: 5px;
 }
