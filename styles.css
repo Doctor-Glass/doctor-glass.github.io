@@ -1,21 +1,22 @@
+/* Root sections */
 :root {
   /* Colors based on the original palette */
-  --background-1: #F03A47;
-  --background-2: #FFFFFF;
-  --background-3: #F1E255;
+  --background-1: #ff3f3f;
+  --background-2: #818181;
+  --background-3: #d44040;
   --background-4: #000000;
   --background-5: #3C3C3B;
   
   --headers: ;
   --text: #000000;
-  --text-inverted: #FDFDB2;
+  --text-inverted: #ff1919;
   --text-header: ;
   --text-subheader: ;
-  --links-normal: #FDFDB2;
-  --links-highlight: #ffff50;
+  --links-normal: #ffe8e8;
+  --links-highlight: #b90000;
   
   --topbar-bg: #FFFFFF;
-  --topbar-border-bottom: #F1E255;
+  --topbar-border-bottom: #FF5757;
   --topbar-text-normal: #000000;
   --topbar-text-hover: #FFFF50;
   --topbar-text-highlight: #3C3C3B;
@@ -36,6 +37,7 @@ html {
   scroll-padding-top: 50px;
 }
 
+/* Navbar */
 #navbar {
   position: fixed;
   top: 0px;
@@ -79,61 +81,26 @@ html {
   
 }
 
+/* Page text */
+.text-inverted {
+  color: var(--text-inverted);
+}
+
+a.text-inverted {
+  color: var(--text);
+}
+
+/* Body */
 body {
   margin: 0;
   padding-top: 50px;
 }
 
-footer {
-  color: var(--text);
-  background-color: var(--footer-bg);
-  text-align: center;
-  overflow: hidden;
-}
-
-footer a {
-  color: var(--links-normal);
-  text-decoration: none;
-  color: var(--color-1);
-}
-
-footer a:hover {
-  color: var(--links-highlight);
-  text-decoration: underline;
-  font-weight: 600;
-}
-
+/* Body content sections */
 section {
   overflow: hidden;
-}
-
-.center-header {
-  padding-top: calc((80vh - 50px) / 2);
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal;
-}
-
-/* Sections */
-.welcome {
-  background-color: var(--background-1);
-  height: 100vh;
-  text-align: center;
-}
-
-.projects {
-  background-color: var(--background-2);
-  
-}
-
-.about-me {
-  background-color: var(--background-3);
-  color: var(--text);
-}
-
-.contact {
-  background-color: var(--background-4);
-  color: var(--text-inverted);
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .section-header {
@@ -164,12 +131,12 @@ section {
 }
 
 .section-list-content {
-  font-size: 16.5px;
+  font-size: 1.5em;
   color: var(--text);
 }
 
 .section-content {
-  font-size: 16.5px;
+  font-size: 1.5em;
   text-indent: 2em;
   color: var(--text);
   width: 80%;
@@ -186,14 +153,55 @@ section {
   color: var(--links-highlight);
 }
 
-.text-inverted {
-  color: var(--text-inverted);
+/* Centered text in body content sections */
+.center-header {
+  padding-top: calc((80vh - 50px) / 2);
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
 }
 
-a.text-inverted {
+/* Main page sections */
+.welcome {
+  background-color: var(--background-1);
+  height: 100vh;
+  text-align: center;
+}
+
+.projects {
+  background-color: var(--background-2);
+  
+}
+
+.about-me {
+  background-color: var(--background-3);
   color: var(--text);
 }
 
+.contact {
+  background-color: var(--background-4);
+  color: var(--text-inverted);
+}
+
+/* Project page sections */
+.project-images {
+  background-color: black;
+  height: 50vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-page-img {
+  height: 90%;
+}
+
+.project-desc {
+  background-color: var(--background-1);
+}
+
+/* Project grid */
 .projects-grid {
   display: grid;
   margin: 30px auto;
@@ -208,28 +216,47 @@ a.text-inverted {
   color: var(--links-normal);
 }
 
-.project-tile:hover {
-  color: var(--links-highlight);
-}
-
-.project-name {
+.project-tile {
+  font-size: 2em;
   text-align: center;
   color: var(--links-normal);
 }
 
-.project-name:hover {
+.project-tile:hover {
   color: var(--links-highlight);
 }
 
-.project-image {
+.project-tile img {
   width: calc(100% - 10px);
+  height: 90%;
   outline: 5px solid black;
 }
 
-.project-image:hover {
+.project-tile:hover img {
   outline: 5px solid var(--links-highlight)
 }
 
+/* Footer */
+footer {
+  color: var(--text);
+  background-color: var(--footer-bg);
+  text-align: center;
+  overflow: hidden;
+}
+
+footer a {
+  color: var(--links-normal);
+  text-decoration: none;
+  color: var(--color-1);
+}
+
+footer a:hover {
+  color: var(--links-highlight);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Contact links in footer */
 .contact-list {
   font-size: 2em;
   text-align: center;
@@ -254,6 +281,7 @@ a.text-inverted {
   display: inline;
 }
 
+/* Media queries */
 @media {
   
 }
