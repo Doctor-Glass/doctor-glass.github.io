@@ -12,6 +12,14 @@
 
         <title>Harrier Bot</title>
         <link rel="icon" type="image/x-icon" href="./images/favicon/favicon.jpg">
+
+        <script src="./scripts/plusdivs.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/agate.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/py.min.js"></script>
+        <script>hljs.highlightAll();</script>
+
     </head>
 
     <header>
@@ -26,7 +34,7 @@
           </navbar>
     </header>
 
-    <body>
+    <body onload="plusDivs(0)">
         <section class="project-images">
             <img class="project-page-img" src="./images/project-images/Harrier_Bot_1.png" alt="Image 1">
         </section>
@@ -34,7 +42,8 @@
         <section class="project-desc" id="about">
             <h1 class="section-header">Harrier Bot</h1>
             <p class="section-subheader">A versatile Discord bot for EVE organizations</p>
-            <p class="section-content">Harrier Bot was conceived out of the need for a flexible Discord bot with a number of tools that would be helpful for a group in EVE Online. While other Discord bots exist for EVE groups, the state of the field at the time is very sparse with a number of developers having dropped their projects and left the game over the last few years and relatively few having created new projects since.</p>
+            <p class="section-content">I run an alliance in the popular MMO EVE Online, called Harrier Dynamics [H-DYN]. As with any large (or, in our case, soon to be large) group in this game, we rely heavily on external tools to provide us with functionality that doesn't exist purely in-game and to give us an edge in conducting our operations. This includes our main HR platform hosted through <a href="https://seat.h-dyn.net" target="_blank">our SeAT</a> and our main social and communications platform which runs through our Discord.</p>
+            <p class="section-content">Harrier Bot was conceived out of the need for a flexible Discord bot with a number of tools that would be helpful for us. While other Discord bots exist for EVE groups, the state of the field at the time is very sparse with a number of developers having dropped their projects and left the game over the last few years and relatively few having created new projects since.</p>
             <p class="section-content">There are a number of functions that I needed a Discord bot to do for my group:</p>
             <ul class="section-list">
                 <li class="section-list-content">Convert times between multiple timezones (covered with the !time module)</li>
@@ -46,13 +55,128 @@
         </section>
 
         <section class="devlogs">
+            <div class="devlog-header">
+                <button class="devlog-button previous" onclick="plusDivs(-1)">&#10094;</button>
+                <h1 class="section-header">Devlogs</h1>
+                <button class="devlog-button next" onclick="plusDivs(1)">&#10095;</button>
+            </div>
+            <div class="devlog">
+                <h3 class="section-content-header">!roulette</h3>
+                <br>
+                <p class="section-content text-inverted">The initial iteration of this project was as a random late-night thought experiment: What if we had a tool for randomly generating fitting concepts? Harrier Dynamics, my alliance, has developed a reputation for highly unconventional fit concepts and fleet tactics on the battlefield, and creative thinking is a big part of what gives us that reputation. So a Discord bot that can, with a single command, generate some random out-of-the-box fit concepts would be helpful to that end.</p>
+                <p class="section-content text-inverted">The underlying method is actually pretty straightforward. Fit concepts consist of an optional set of wildcard prefixes (eg. "overpropped") representing significant and wild deviations on normal fitting mechanics, a type of tank (eg. "active shield") to denote how the ship's defenses are supposed to be fit, a role for the fit (eg. "DPS") to drive the rest of the fit, and a hull (eg. "Griffin Navy Issue") to build off of. This produces outputs such as "Overpropped active armor DPS Punisher" or "Shield buffer logi Kestrel". Ofc., some concepts are more viable (or sane) than others, but that's the fun of the roulette!</p>
+                <p class="section-content text-inverted">Some future improvements are planned:</p>
+                <ul class="section-list text-inverted">
+                    <li class="section-list-content text-inverted">Wildcards are chosen far more frequently and regularly than is optimal, making fit concept choices kinda stale. Possible solutions include the insertion of blank wildcard options or refactoring the random selection algorithm for wildcards to be biased towards adding fewer or none whatsoever.</li>
+                    <li class="section-list-content text-inverted">Fit concepts are often completely incoherent, and there's no option to make fits that aren't completely random. One possible solution is to extend hulls to include some information about typical tank types, roles, etc. and to bias the selection algorithm towards fit concepts that sort of make sense.</li>
+                    <li class="section-list-content text-inverted">Fit concepts are fairly bare and vague. One possible solution is a more robust library of hulls and modules and methods to dynamically generate full fits. This could also be wrapped into a separate module.</li>
+                </ul>
+            </div>
+            <div class="devlog">
+                <h3 class="section-content-header">!time</h3>
+                <p class="section-content text-inverted">Time conversion is something that any EVE group has to do on a regular basis. Even if your group does not contain anyone from different time zones, or is all rougly similarly geolocated (eg. 100% USTZ or 100% EUTZ, where your members are close enough to reasonably do back-of-the-envelope timezone translation), you will inevitably have to convert from server time to player time and/or communicate ops and timers to players or groups from significantly different timezones.</p>
+                <p class="section-content text-inverted">What I wanted to do was to build a module for the Harrier Bot that would make timezone converstion easy. It needed to enable server members to do any of the following:</p>
+                <ul class="section-list text-inverted">
+                    <li class="section-list-content text-inverted">Get the current server time</li>
+                    <li class="section-list-content text-inverted">Convert the current server time to any timezone</li>
+                    <li class="section-list-content text-inverted">Convert a time in any timezone to the corresponding server time</li>
+                    <li class="section-list-content text-inverted">Convert a time in any timezone to any number of other timezones</li>
+                </ul>
+                <p class="section-content text-inverted">I also wanted to build this out myself, to get a handle on how to convert times without using an external timezone library to just do it for me. Of course in an enterprise project I would use a reliable, accountable, and well-maintained external library to do this all for me, but I've always felt it's important to know how your tools work before you rely too heavily on them.</p>
+                <p class="section-content text-inverted">The first thing I did was build a dictionary matching timezone abbreviations and country codes to their relevant timezone offsets. This was tedious, though not difficult. Just put on a podcast and add entries. The result is such:</p>
+                <pre><code class="section-code-block text-inverted">timezones = {
+                    "ACST":9.5, "ACDT":10.5, "AEST":10, "AEDT":11, "AKST":-9, "AKDT":-8, "AST":-4, "ADT":-3, "AWST":8, "CAT":2, "CET":1, "CEST":2, "CHST":10, "CST":-6, "CDT":-5, "EAT":3, "EET":2...}</code></pre>
+                <p class="section-content text-inverted">This matches a prefix to an offset from GMT, in hours. After that comes the body of the method: <code>convert_time(args)</code>. Args in this case is a tuple fed in from the main function that contains any arguments given by users when they sent the command in Discord.</p>
+                <p class="section-content text-inverted">The first thing that the function does is convert the current year to a year in YC time. In the world of New Eden, the standard calendar is the YC calendar, which is essentially the last two digits of the current year plus two, plus one hundred, or an offset from the current year of 1,898 years. So 2024 is YC126, for example. This is accomplished through the following:</p>
+                <pre><code class="section-code-block text-inverted">years = datetime.today().year - 1898</code></pre>
+                <p class="section-content text-inverted">This uses the DateTime today() method to get the current computer time, pull the year from that, adjust it by the appropriate amount, and then store it for later use.</p>
+                <p class="section-content text-inverted">From there we check to see if the number of arguments passed is equal to 1, indicating that the user just wants to get the current time for a given timezone. If that's the case, we do the following:</p>
+                <pre><code class="section-code-block text-inverted">time_offset = 0
 
+                if args[0] in timezones:
+                    time_offset = timezones[args[0]]
+                else:
+                    return "Invalid timezone!"
+            
+                time_current = datetime.now(timezone.utc) + timedelta(hours=time_offset + 1)
+            
+                output = time_current.strftime(f"%d %b %H:%M")
+                output = output[0:6] + f" YC{years} " + output[7:]  # Insert the current YC date into the time string
+            
+                return output</code></pre>
+                <p class="section-content text-inverted">This checks if the timezone passed is valid (ie. contained within the timezones dictionary) and, if so, uses its respective offset to modify a DateTime object with the current UTC time. This is parsed with DateTime's strftime method into a human-readable format, and some simple string manipulation is used to insert the current year in YC format (for thematic reasons). This is then returned as output to the main command function.</p>
+                <p class="section-content text-inverted">The case where a user wants to convert a time in a source timezone to the respective time in one or more destination timezones is handled with the following:</p>
+                <pre><code class="section-code-block text-inverted">if args[0] in timezones:
+                    dest_tz_offsets = []
+            
+                    # Check if the second value is a valid time value
+                    if re.search("\d+:+\d", args[1]):
+                        # If so, convert args[0] timezone time value args[1] to timezones args[2:]
+                        source_tz_offset = None
+            
+                        if args[0] in timezones:
+                            source_tz_offset = timezones[args[0]]
+                        else:
+                            return "Invalid timezone!"
+                            
+                        source_time = datetime.strptime(args[1], "%H:%M")
+            
+                        for tz in args[2:]:
+                            if tz in timezones:
+                                dest_tz_offsets.append(timezones[tz])
+                            else:
+                                return "Invalid timezone!"
+                            
+                        output = ""
+            
+                        for time in dest_tz_offsets:
+                            time_current = source_time + timedelta(hours = (time - source_time_offset))
+            
+                            out_string = time_current.strftime(f"%H:%M") + " "
+            
+                            output += out_string
+                            
+                        return output
+                </code></pre>
+                <p class="section-content text-inverted">This creates an array of destination timezone offsets, then checks to see if the second argument passed is a valid time in format HH:MM by using some basic regex. If so, it stores the input time as a DateTime object. We set the source timezone offset to the timezone offset of the first timezone passed, then iterate through the third argument passed on to populate the destination timezone offsets array. From there it's as simple as iterating through the destination timezone offsets array, using them to convert the current UTC time to the respective timezone's time, and add it to an output string. The output string is then returned.</p>
+                <p class="section-content text-inverted">Of course, sometimes we don't want to pass a given time and just want to convert the current time from one timezone to one or more other timezones. This is handled as follows, following directly from the above:</p>
+                <pre><code class="section-code-block text-inverted">else:
+                    for tz in args[0:]:
+                        if tz in timezones:
+                            dest_tz_offsets.append(timezones[tz])
+                        else:
+                            return "Invalid timezone!"
+                    
+                    output = ""
+
+                    for time in dest_tz_offsets:
+                        time_current = datetime.now(timezone.utc) + timedelta(hours = time + 1)
+
+                        out_string = time_current.strftime(f"%d %b %H:%M")
+                        out_string = out_string[0:6] + f" YC{years} " + out_string[7:] + ", "
+
+                        output += out_string
+                    
+                    return output
+                </code></pre>
+                <p class="section-content text-inverted">This does much the same as above, but without parsing an input time value.</p>
+                <p class="section-content text-inverted">There's a few modifications and improvements I'd like to make to the !time function in future:</p>
+                <ul class="section-list">
+                    <li class="section-list-content text-inverted">The code needs cleaning up, and a few redundant sections need to be trimmed.</li>
+                    <li class="section-list-content text-inverted">I'd like to add functionality to take in a given server time and some destination timezones and convert that time to a local time in the given destination timezones.</li>
+                </ul>
+            </div>
+            <div class="devlog">
+                <h3 class="section-content-header">!pricecheck</h3>
+                <p class="section-content text-inverted">I'm currently waiting on a valid API key for the Janice API in order to finish the price checker. Once I get that I can start working on it and filling this section in. Stay tuned!</p>
+            </div>
         </section>
     </body>
 
     <footer>
         <p>Copyright &copy 2024 Nathan Hodson</p>
         <br>
-        <p>This site uses <a href="https://fonts.google.com/noto/specimen/Noto+Sans+Mono/">Noto Sans Mono</a></p>
+        <p>This site uses <a href="https://fonts.google.com/noto/specimen/Noto+Sans+Mono/" target="_blank">Noto Sans Mono</a></p>
+        <p>This site uses <a href="https://github.com/highlightjs/highlight.js" target="_blank">Highlight.js</a> for code block highlighting.</p>
     </footer>
 </html>

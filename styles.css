@@ -107,7 +107,7 @@ section {
   color: var(--text-header);
   margin: 10px auto;
   text-align: center;
-  font-size: 50px;
+  font-size: 2.5em;
 }
 
 .section-subheader {
@@ -116,7 +116,7 @@ section {
   margin: 5px auto;
   text-align: center;
   font-style: italic;
-  font-size: 25px;
+  font-size: 1.65em;
 }
 
 .section-content-header {
@@ -131,17 +131,26 @@ section {
 }
 
 .section-list-content {
-  font-size: 1.5em;
+  font-size: 1.25em;
   color: var(--text);
 }
 
+.section-list-content.text-inverted {
+  color: var(--text-inverted)
+}
+
 .section-content {
-  font-size: 1.5em;
+  font-size: 1.25em;
   text-indent: 1.5em;
   color: var(--text);
   width: 60%;
   margin: 0 auto;
   padding-bottom: 5px;
+  padding-top: 1em;
+}
+
+.section-content.text-inverted {
+  color: var(--text-inverted);
 }
 
 .section-content a {
@@ -151,6 +160,24 @@ section {
 
 .section-content a:hover {
   color: var(--links-highlight);
+}
+
+.section-code-block {
+  display: block;
+  margin: 0 auto;
+  font-size: 1.25em;
+  width: 57%;
+  padding: 1.5%;
+  overflow: auto;
+  background-color: var(--background-5);
+}
+
+pre {
+  white-space: pre-line;
+}
+
+.section-code-block.text-inverted {
+
 }
 
 /* Centered text in body content sections */
@@ -234,6 +261,38 @@ section {
 
 .project-tile:hover img {
   outline: 5px solid var(--links-highlight)
+}
+
+/* Devlogs */
+.devlogs {
+  background-color: var(--background-4);
+  color: var(--text-inverted);
+}
+
+.devlog-header {
+  width: 25%;   
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.devlog-button {
+  color: var(--links-highlight);
+  font-size: 3em;
+  font-weight: 600;
+  text-decoration: none;
+  padding: none;
+  border: none;
+  background: none;
+}
+
+.devlog-button:hover {
+  color: var(--links-normal)
+}
+
+.devlog {
+  color: var(--text-inverted);
 }
 
 /* Footer */
